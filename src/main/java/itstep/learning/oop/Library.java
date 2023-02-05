@@ -39,6 +39,14 @@ public class Library {
             }
         }
     }
+
+    public void showPresentable() {
+        for( Literature literature : funds ) {
+            if( literature instanceof Presentable ) {
+                System.out.println( literature.toString() ) ;
+            }
+        }
+    }
 }
 /* ООП - Объекты + взаимодействие
  - Инкапсуляция

@@ -1,25 +1,27 @@
 package itstep.learning.oop;
-import java.time.LocalDate;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Newspaper extends Literature{
-    private LocalDate date ;
+    private Date date ;
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat( "dd.MM.yy" ) ;
 
-    public Newspaper(LocalDate date, String title ) {
-            this.date = date ;
+    public Newspaper(String date, String title ) throws ParseException {
+            this.date = dateFormat.parse( date ) ;
             super.setTitle( title ) ;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
             return date ;
     }
 
-    public void setDate( LocalDate date ) {
-            this.date = date ;
+    public void setDate( String date ) throws ParseException {
+        this.date = dateFormat.parse( date ) ;
     }
 
     @Override
         public String toString() {
-                return this.date + ": " + super.toString() ;
+                return dateFormat.format( this.date ) + ": " + super.toString() ;
         }
 }

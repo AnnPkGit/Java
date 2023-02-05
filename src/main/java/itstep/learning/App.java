@@ -25,8 +25,13 @@ public class App {   // Классы именуются CapitalCamelCase
         library.add( new Book( "Shevchenko", "Kobzar" ) ) ;         // разные реализации
         library.add( new Journal( 10, "ArgC & ArgV" ) ) ;           // (Book, Journal)
         library.add( new Journal( 5, "Nature" ) ) ;                 // Одного интерфейса (Literature)
-        library.add( new Newspaper( LocalDate.now(), "Newspaper about bugs" ) ) ;
-        library.add( new Newspaper( LocalDate.now().plusDays(-4), "Newspaper about frogs" ) ) ;
+
+        try {
+            library.add( new Newspaper( "09.08.2022", "Newspaper about bugs" ) ) ;
+            library.add( new Newspaper( "12.09.2022", "Newspaper about frogs" ) ) ;
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
 
         try {
             library.add( new Comics( "Marvel", 1, "13.09.2022" ) ) ;
@@ -36,6 +41,15 @@ public class App {   // Классы именуются CapitalCamelCase
         }
         library.add( new AudioBook( "Kobzar. Shevchenko", "SuperSound Studio" ) ) ;
 
+        try {
+            library.add( new Hologram( "12.09.2022", "Jam and holograms" ) ) ;
+            library.add( new Hologram( "12.12.2022", "Jam and holograms 2" ) ) ;
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        library.showPresentable();
+        System.out.println( "-----------------------------------------" ) ;
         library.printFunds() ;
         System.out.println( "-----------------------------------------" ) ;
         library.showPrinted() ;
