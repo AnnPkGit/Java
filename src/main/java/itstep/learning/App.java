@@ -5,6 +5,8 @@ import itstep.learning.files.*;
 
 
 import java.text.ParseException;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Scanner ;
 
 /**
@@ -12,17 +14,20 @@ import java.util.Scanner ;
  *
  */
 public class App {   // Классы именуются CapitalCamelCase
-    public static void main( String[] args ) {
+    public static void main2( String[] args ) {
         new IoDemo().run();
         new dirDemo().run();
     }
-    public static void opp( String[] args ) {
+    public static void main( String[] args ) {
         Library library = new Library() ;
 
         library.add( new Book( "Knuth", "Art of programming" ) ) ;  // Полиморфизм -
         library.add( new Book( "Shevchenko", "Kobzar" ) ) ;         // разные реализации
         library.add( new Journal( 10, "ArgC & ArgV" ) ) ;           // (Book, Journal)
         library.add( new Journal( 5, "Nature" ) ) ;                 // Одного интерфейса (Literature)
+        library.add( new Newspaper( LocalDate.now(), "Newspaper about bugs" ) ) ;
+        library.add( new Newspaper( LocalDate.now().plusDays(-4), "Newspaper about frogs" ) ) ;
+
         try {
             library.add( new Comics( "Marvel", 1, "13.09.2022" ) ) ;
         }
