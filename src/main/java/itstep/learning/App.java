@@ -14,11 +14,11 @@ import java.util.Scanner ;
  *
  */
 public class App {   // Классы именуются CapitalCamelCase
-    public static void main2( String[] args ) {
+    public static void main( String[] args ) {
         new IoDemo().run();
         new dirDemo().run();
     }
-    public static void main( String[] args ) {
+    public static void main2( String[] args ) {
         Library library = new Library() ;
 
         library.add( new Book( "Knuth", "Art of programming" ) ) ;  // Полиморфизм -
